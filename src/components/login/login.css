@@ -1,0 +1,33 @@
+.Login {
+  width: 25%;
+  height: 50%;
+  margin: 1px auto;
+  right: 120px;
+  position: absolute;
+  margin-top: 90px;
+  box-shadow: 0 2px 3px #ccc;
+  padding: 20px;
+  text-align: center;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.button {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  margin: 8px auto;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  width: 80%;
+  text-align: center;
+}
+input[type="text"],
+input[type="password"] {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 8px auto;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}

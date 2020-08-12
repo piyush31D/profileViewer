@@ -1,0 +1,24 @@
+.UserClass {
+  text-align: center;
+  background-color: blue;
+  display: flex;
+  right: 100px;
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  font-size: auto;
+  color: white;
+  height: 20px;
+  width: 300px;
+  padding: 30px;
+}
+.App-header {
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  height: 100px;
+  padding: 10px;
+}
