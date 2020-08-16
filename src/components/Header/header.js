@@ -1,26 +1,34 @@
 import React from "react";
 import "../../containers/App";
-import UserInfo from "../Header/userInfo";
-import Login from "../login/login";
+
+import { Link } from "react-router-dom";
 const header = (props) => {
-  let signIn = "";
-  const loadLogin = () => {
-    console.log("Login Clicked");
-    signIn = <Login uname={props.uname} />;
-  };
+  // let signIn = "";
+  // const loadLogin = () => {
+  //   console.log("Login Clicked");
+  //   signIn = <Login uname={props.uname} />;
+  // };
 
   return (
     <div>
       <div className="App-header">
         <h1>PROFILE VIEWER</h1>
+        <ul className="nav-links">
+          <Link to="/SignUp">
+            <li> SignUp</li>
+          </Link>
+          <Link to="/Login">
+            <li> Login</li>
+          </Link>
+        </ul>
 
-        <div>
+        {/* <li>
           <input type="button" value="Overview" onClick={props.ovrview} />
           <input type="button" value="Education" />
           <input type="button" value="Carrier" />
-        </div>
+        </li> */}
       </div>
-      <div className="UserClass">
+      {/* <div className="UserClass">
         {props.name !== "" ? (
           <UserInfo name={props.name} />
         ) : (
@@ -36,10 +44,10 @@ const header = (props) => {
             /SignUp to view profile.
           </p>
         )}
-      </div>
-      <div>
+      </div> */}
+      {/* <div>
         <Login uname={props.uname} />
-      </div>
+      </div> */}
     </div>
   );
 };
