@@ -1,21 +1,24 @@
 import React from "react";
-//import LoginError from "../Error/error";
+import UserInfo from "../Header/userInfo";
 import "./login.css";
 import { useForm } from "react-hook-form";
+import { useSelector, useDispatch } from "react-redux";
+import { signIn, custDeatails } from "../../actions";
 
 const Login = (props) => {
   const { register, handleSubmit, errors } = useForm();
-
+  const isLoggedIn = useSelector((state) => state.isLogged);
+  const dispatch = useDispatch();
+  console.log("Redux" + isLoggedIn);
   const onSubmit = (event) => {
     const checkValidUser = database.find((dt) => {
       if (dt.validUser === event.username) {
-        props.uname(event);
-        return true;
+        dispatch(signIn());
+        dispatch(custDeatails(event.username));
       } else {
         return false;
       }
     });
-    console.log(checkValidUser);
     if (checkValidUser === "undefined") {
       alert("User Does not exist.");
     }
@@ -35,6 +38,9 @@ const Login = (props) => {
     },
   ];
 
+  // if (isLoggedIn) {
+  //   return <UserInfo />;
+  // }
   return (
     <form name="form-login" onSubmit={handleSubmit(onSubmit)} className="Login">
       <p> Login</p>
