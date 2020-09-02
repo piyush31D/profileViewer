@@ -1,3 +1,18 @@
 .App {
   text-align: center;
 }
+
+.user-nav {
+  width: 40%;
+  display: flex;
+  justify-content: none;
+  align-items: left;
+  list-style: none;
+  background-color: white;
+}
+
+.user-nav li {
+  text-decoration: none !;
+  display: inline;
+  padding: 20px;
+}

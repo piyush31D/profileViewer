@@ -10,3 +10,9 @@ export function custDeatails(data) {
     payload: data,
   };
 }
+export function carrierDetails(dt) {
+  return {
+    type: "Education_Details",
+    payload: dt,
+  };
+}

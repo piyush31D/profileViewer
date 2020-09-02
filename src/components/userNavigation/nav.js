@@ -1,19 +1,24 @@
 import React from "react";
-import SignUp from "../SignUp/signUp";
 import { Link } from "react-router-dom";
 const nav = (props) => {
   return (
-    <div>
-      <ul className="user-nav">
-        <Link to="/SignUp">
-          <li> Overview</li>
-        </Link>
-        <Link to="/SignUp">
+    <div className="user-nav">
+      <ul>
+        <li>
+          <Link to="/Overview">Overview</Link>
+        </li>
+        <li>
+          <Link to="/carrier">Carrier</Link>
+        </li>
+        <li>
+          <Link to="/academics">Academics</Link>
+        </li>
+        {/* <Link to="/carrier">
           <li> Academics</li>
-        </Link>
-        <Link to="/SignUp">
+        </Link> */}
+        {/* <Link to="/academics">
           <li> Carrier</li>
-        </Link>
+        </Link> */}
       </ul>
     </div>
   );

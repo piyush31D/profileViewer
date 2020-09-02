@@ -4,17 +4,20 @@ import "./login.css";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import { signIn, custDeatails } from "../../actions";
+import { Redirect } from "react-router-dom";
 
 const Login = (props) => {
   const { register, handleSubmit, errors } = useForm();
   const isLoggedIn = useSelector((state) => state.isLogged);
   const dispatch = useDispatch();
-  console.log("Redux" + isLoggedIn);
+  //onsubmit event handler
   const onSubmit = (event) => {
     const checkValidUser = database.find((dt) => {
-      if (dt.validUser === event.username) {
+      console.log(dt);
+      if (dt.userId === event.username) {
         dispatch(signIn());
-        dispatch(custDeatails(event.username));
+        // const details = JSON.stringify(dt);
+        dispatch(custDeatails(dt));
       } else {
         return false;
       }
@@ -23,72 +26,87 @@ const Login = (props) => {
       alert("User Does not exist.");
     }
   };
+
+  // Interface userType {
+  //   userId:string;
+  //   username:string;
+  //   email:string;
+  // }
+
   const database = [
     {
-      validUser: "Ashish",
-      password: "123456ak",
+      userId: "Ashish",
+      userName: "Ashish Kumar",
+      email: "as@gm.com",
     },
     {
-      validUser: "John",
-      password: "John1234",
+      userId: "John",
+      userName: "John Elia",
+      email: "John@gm.com",
     },
     {
-      validUser: "Guest",
-      password: 12345678,
+      userId: "Guest",
+      userName: "Guest User",
+      email: "Guest@gm.com",
     },
   ];
 
-  // if (isLoggedIn) {
-  //   return <UserInfo />;
-  // }
-  return (
-    <form name="form-login" onSubmit={handleSubmit(onSubmit)} className="Login">
-      <p> Login</p>
-      <b>User ID</b>
-      <div className="input">
-        <input
-          type="text"
-          placeholder="User Name"
-          name="username"
-          ref={register({ required: true, maxLength: 10, minLength: 4 })}
-        />
-      </div>
-      {errors.username && errors.username.type === "minLength" && (
-        <p>Minimum Length of 8 is required</p>
-      )}
-      {errors.username && errors.username.type === "required" && (
-        <span role="alert"> User name is required</span>
-      )}
-      {errors.username && errors.username.type === "maxLength" && (
-        <p>Can not be larger than 10.</p>
-      )}
+  if (isLoggedIn) {
+    return <Redirect to="/Home" />;
+  } else {
+    return (
+      <form
+        name="form-login"
+        onSubmit={handleSubmit(onSubmit)}
+        className="Login"
+      >
+        <p> Login</p>
+        <b>User ID</b>
+        <div className="input">
+          <input
+            type="text"
+            placeholder="User Name"
+            name="username"
+            ref={register({ required: true, maxLength: 10, minLength: 4 })}
+          />
+        </div>
+        {errors.username && errors.username.type === "minLength" && (
+          <p>Minimum Length of 8 is required</p>
+        )}
+        {errors.username && errors.username.type === "required" && (
+          <span role="alert"> User name is required</span>
+        )}
+        {errors.username && errors.username.type === "maxLength" && (
+          <p>Can not be larger than 10.</p>
+        )}
 
-      <b>Password</b>
+        <b>Password</b>
 
-      <div className="input">
-        <input
-          type="password"
-          placeholder="Password"
-          name="password"
-          ref={register({
-            required: true,
-            maxLength: 8,
-            minLength: 5,
-            pattern: "[A-Za-z]",
-          })}
-        />
-      </div>
-      {errors.password && errors.password.type === "minLength" && (
-        <p>Minimum Length of 8 is required</p>
-      )}
-      {errors.password && errors.password.type === "required" && (
-        <span role="alert">Password is required</span>
-      )}
+        <div className="input">
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            ref={register({
+              required: true,
+              maxLength: 8,
+              minLength: 5,
+              pattern: "[A-Za-z]",
+            })}
+          />
+        </div>
+        {errors.password && errors.password.type === "minLength" && (
+          <p>Minimum Length of 8 is required</p>
+        )}
+        {errors.password && errors.password.type === "required" && (
+          <span role="alert">Password is required</span>
+        )}
 
-      <div className="button">
-        <input type="submit" value="Submit" />
-      </div>
-    </form>
-  );
+        <div className="button">
+          <input type="submit" value="Submit" />
+        </div>
+      </form>
+    );
+  }
 };
 export default Login;
