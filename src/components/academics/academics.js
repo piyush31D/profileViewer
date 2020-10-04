@@ -1,6 +1,17 @@
 import React from "react";
-const academics = () => {
-  return <h3> User Accademics to be updated</h3>;
+import AcademicItem from "./academicItem";
+const Academics = (props) => {
+  console.log("Academics ", props);
+  return props.academicItems.map((academic, index) => {
+    return (
+      <AcademicItem
+        academic={academic}
+        key={index}
+        changeHandler={(event) => props.changeHandler(event)}
+        details={props.details}
+      />
+    );
+  });
 };
 
-export default academics;
+export default Academics;

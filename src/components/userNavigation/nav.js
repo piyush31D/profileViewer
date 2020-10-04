@@ -13,12 +13,6 @@ const nav = (props) => {
         <li>
           <Link to="/academics">Academics</Link>
         </li>
-        {/* <Link to="/carrier">
-          <li> Academics</li>
-        </Link> */}
-        {/* <Link to="/academics">
-          <li> Carrier</li>
-        </Link> */}
       </ul>
     </div>
   );

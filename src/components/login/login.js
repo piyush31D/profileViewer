@@ -1,12 +1,12 @@
 import React from "react";
-import UserInfo from "../Header/userInfo";
-import "./login.css";
+//import UserInfo from "../Header/userInfo";
+import "./login.module.css";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import { signIn, custDeatails } from "../../actions";
 import { Redirect } from "react-router-dom";
-
-const Login = (props) => {
+import Style from "./login.module.css";
+const Login = () => {
   const { register, handleSubmit, errors } = useForm();
   const isLoggedIn = useSelector((state) => state.isLogged);
   const dispatch = useDispatch();
@@ -26,12 +26,6 @@ const Login = (props) => {
       alert("User Does not exist.");
     }
   };
-
-  // Interface userType {
-  //   userId:string;
-  //   username:string;
-  //   email:string;
-  // }
 
   const database = [
     {
@@ -68,6 +62,7 @@ const Login = (props) => {
             placeholder="User Name"
             name="username"
             ref={register({ required: true, maxLength: 10, minLength: 4 })}
+            style={{ width: "auto !important" }}
           />
         </div>
         {errors.username && errors.username.type === "minLength" && (

@@ -1,11 +1,4 @@
-const initialState = {
-  HSCBoard: "",
-  HSCPercent: "",
-  SSCBoard: "",
-  SSCPercent: "",
-  GraduationBoard: "",
-  GraduationPercent: "",
-};
+const initialState = [];
 const EducationDetails = (state = initialState, action) => {
   switch (action.type) {
     case "Education_Details":

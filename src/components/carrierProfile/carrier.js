@@ -1,24 +1,36 @@
+import { Button } from "antd";
 import React, { useState } from "react";
-import InpDetails from "./InpDetails";
-
 const Carrier = () => {
-  const [counter, setCounter] = useState(false);
-
-  const academics = ["HSC", "SSC", "Graduation"];
+  const [counter, setCounter] = useState(0);
+  const handleAddCarrier = () => {
+    setCounter(counter + 1);
+    companyInpDetails(counter);
+  };
+  const companyInpDetails = (cnt) => {
+    return (
+      <div key={`comp{cnt}`}>
+        <span>Company Name: </span>
+        <input type="text" name="company" />
+        <span>Start Date: </span>
+        <input type="date" name="startDate" />
+        <span>End Date: </span>
+        <input type="date" name="endDate" />
+      </div>
+    );
+  };
   return (
     <div>
       <h3> *** Carrier Details ***</h3>
-      <input
-        type="button"
-        value="Add Carrier"
-        onClick={() => {
-          setCounter({ counter: true });
-        }}
-      />
-      {/* Getting Details from user and update into object array */}
-      {counter ? <InpDetails higherSecondaryTitle={academics} /> : null}
+      <div>
+        <Button
+          style={{ font: "bold", color: "blue", fontSize: "large" }}
+          onClick={handleAddCarrier}
+        >
+          + Add Carrier
+        </Button>
+      </div>
+      <form>{companyInpDetails}</form>
     </div>
   );
 };
-
 export default Carrier;
